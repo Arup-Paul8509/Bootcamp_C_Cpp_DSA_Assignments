@@ -1,0 +1,188 @@
+Assignment 2 : Operators in C Programming
+
+-----------------------------------------------------------------------
+//1. Write a program to print unit digit of a given number
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("Unit Digit = %d",(n%10));
+    printf("\n");
+    return 0;
+}
+-----------------------------------------------------------------------
+//2. Write a program to print a given number without its last digit.
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("%d",(n/10));
+    printf("\n");
+    return 0;
+}
+-----------------------------------------------------------------------
+//3. Write a program to swap values of two int variables
+
+#include<stdio.h>
+int main()
+{
+    int a,b,t;
+    printf("Enter value for a and b : ");
+    scanf("%d%d",&a,&b);
+    printf("Before Swapping --- \n a = %d , b = %d",a,b);
+    t=a;
+    a=b;
+    b=t;
+    printf("\nAfter Swapping --- \n a = %d , b = %d",a,b);
+    printf("\n");
+    return 0;
+}
+-----------------------------------------------------------------------
+//4. Write a program to swap values of two int variables without using a third variable.
+
+#include<stdio.h>
+int main()
+{
+    int a,b;
+    printf("Enter value for a and b : ");
+    scanf("%d%d",&a,&b);
+    printf("Before Swapping --- \n a = %d , b = %d",a,b);
+    a=a+b;
+    b=a-b;
+    a=a-b;
+    printf("\nAfter Swapping --- \n a = %d , b = %d",a,b);
+    printf("\n");
+    return 0;
+}
+-----------------------------------------------------------------------
+//5. Write a program to input a three-digit number and display the sum of the digits.
+
+#include<stdio.h>
+int main()
+{
+    int n,fd,md,ld,s;
+    printf("Enter a third digit number : ");
+    scanf("%d",&n);
+    ld=n%10;
+    md=(n/10)%10;
+    fd=n/100;
+    s=fd+md+ld;
+    printf("Sum of digits = %d\n",s);
+    return 0;
+}
+-----------------------------------------------------------------------
+//6. Write a program which takes a character as an input and displays its ASCII code.
+
+#include<stdio.h>
+int main()
+{
+    char ch;
+    printf("Enter a character : ");
+    scanf("%c",&ch);
+    printf("ASCII code of %c is %d\n",ch,ch);
+    return 0;
+}
+-----------------------------------------------------------------------
+//7. Write a program to find the position of first 1 in LSB.
+
+#include<stdio.h>
+int main()
+{
+    int n,pos;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    pos=n&(~(n-1));
+    printf("Position of first 1 in LSB is %d",pos);
+    return 0;
+}
+-----------------------------------------------------------------------
+//8. Write a program to check whether the given number is even or odd using a bitwise operator.
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    if(n&1)
+        printf("Odd");
+    else
+        printf("Even");
+    return 0;
+}
+-----------------------------------------------------------------------
+//9. Write a program to print size of an int, a float, a char and a double type variable
+
+#include<stdio.h>
+int main()
+{
+    printf("int -> %d bytes\n",sizeof(int));
+    printf("float -> %d bytes\n",sizeof(float));
+    printf("char -> %d bytes\n",sizeof(char));
+    printf("double -> %d bytes\n",sizeof(double));
+    return 0;
+}
+-----------------------------------------------------------------------
+/*
+10. Write a program to make the last digit of a number stored in a variable as zero.
+(Example - if x=2345 then make it x=2340)
+*/
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("%d\n",n-(n%10));
+    return 0;
+}
+-----------------------------------------------------------------------
+/*
+11. Write a program to input a number from the user and also input a digit. Append a
+digit in the number and print the resulting number. (Example - number=234 and
+digit=9 then the resulting number is 2349)
+*/
+
+#include<stdio.h>
+int main()
+{
+    int n,d;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("Enter a digit : ");
+    scanf("%d",&d);
+    printf("%d\n",n*10+d);
+    return 0;
+}
+-----------------------------------------------------------------------
+//12. Assume price of 1 USD is INR 76.23. Write a program to take the amount in INR and convert it into USD.
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter INR : ");
+    scanf("%d",&n);
+    printf("USD = %f\n",n*76.23);
+    return 0;
+}
+-----------------------------------------------------------------------
+//13. Write a program to take a three-digit number from the user and rotate its digits by one position towards the right.
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("%d\n",(n%10)*100+(n/10));
+    return 0;
+}
+-----------------------------------------------------------------------
