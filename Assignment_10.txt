@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Assignment 10 : Functions
 
 -----------------------------------------------------------------------------------------
@@ -226,3 +227,233 @@ void prime_factors(int n)
     }
 }
 -----------------------------------------------------------------------------------------
+=======
+Assignment 10 : Functions
+
+-----------------------------------------------------------------------------------------
+//1. Write a function to calculate the area of a circle. (TSRS)
+
+#include<stdio.h>
+int area(int);
+int main()
+{
+    int a;
+    printf("Enter radius : ");
+    scanf("%d",&a);
+    printf("Area of Circle = %d",area(a));
+    return 0;
+}
+int area(int r)
+{
+    return 3.14*r*r;
+}
+-----------------------------------------------------------------------------------------
+//2. Write a function to calculate simple interest. (TSRS)
+
+#include<stdio.h>
+int simple_interest(int,int,int);
+int main()
+{
+    int p,t,r;
+    printf("Enter principal, time and rate of interest :");
+    scanf("%d%d%d",&p,&t,&r);
+    printf("Simple interest = %d",simple_interest(p,t,r));
+    return 0;
+}
+int simple_interest(int p,int t,int r)
+{
+    int si;
+    si=(p*t*r)/100;
+    return si;
+}
+-----------------------------------------------------------------------------------------
+//3. Write a function to check whether a given number is even or odd. Return 1 if the number is even, otherwise return 0. (TSRS)
+
+#include<stdio.h>
+int check(int);
+int main()
+{
+    int a;
+    printf("Enter a number : ");
+    scanf("%d",&a);
+    if(check(a))
+        printf("Even");
+    else
+        printf("Odd");
+    return 0;
+}
+int check(int n)
+{
+    if(n%2==0)
+        return 1;
+    else
+        return 0;
+}
+-----------------------------------------------------------------------------------------
+//4. Write a function to print first N natural numbers (TSRN)
+
+#include<stdio.h>
+void printN(int);
+int main()
+{
+    int n;
+    printf("Enter value for n : ");
+    scanf("%d",&n);
+    printN(n);
+    return 0;
+}
+void printN(int n)
+{
+    int i;
+    for(i=1;i<=n;i++)
+        printf("%d ",i);
+}
+-----------------------------------------------------------------------------------------
+//5. Write a function to print first N odd natural numbers. (TSRN)
+
+#include<stdio.h>
+void printOdd(int);
+int main()
+{
+    int n;
+    printf("Enter value for n : ");
+    scanf("%d",&n);
+    printOdd(n);
+    return 0;
+}
+void printOdd(n)
+{
+    int i;
+    for(i=1;i<=n;i++)
+        printf("%d ",(2*i-1));
+}
+-----------------------------------------------------------------------------------------
+//6. Write a function to calculate the factorial of a number. (TSRS)
+
+#include<stdio.h>
+int fact(int);
+int main()
+{
+    int a;
+    printf("Enter a number : ");
+    scanf("%d",&a);
+    printf("Factorial = %d",fact(a));
+    return 0;
+}
+int fact(int n)
+{
+    int i,f=1;
+    for(i=1;i<=n;i++)
+        f=f*i;
+    return f;
+}
+-----------------------------------------------------------------------------------------
+//7. Write a function to calculate the number of combinations one can make from n items and r selected at a time. (TSRS)
+
+#include<stdio.h>
+int nCr(int,int);
+int fact(int);
+int main()
+{
+    int n,r;
+    printf("Enter value for n and r : ");
+    scanf("%d%d",&n,&r);
+    printf("Number of combinations = %d",nCr(n,r));
+    return 0;
+}
+int fact(int n)
+{
+    int i,f=1;
+    for(i=1;i<=n;i++)
+        f=f*i;
+    return f;
+}
+int nCr(int n,int r)
+{
+    return fact(n)/(fact(r)*fact(n-r));
+}
+-----------------------------------------------------------------------------------------
+//8. Write a function to calculate the number of arrangements one can make from n items and r selected at a time. (TSRS)
+
+#include<stdio.h>
+int nPr(int,int);
+int fact(int);
+int main()
+{
+    int n,r;
+    printf("Enter value for n and r : ");
+    scanf("%d%d",&n,&r);
+    printf("Number of arrangements = %d",nCr(n,r));
+    return 0;
+}
+int fact(int n)
+{
+    int i,f=1;
+    for(i=1;i<=n;i++)
+        f=f*i;
+    return f;
+}
+int nCr(int n,int r)
+{
+    return fact(n)/fact(n-r);
+}
+-----------------------------------------------------------------------------------------
+//9. Write a function to check whether a given number contains a given digit or not. (TSRS)
+
+#include<stdio.h>
+int check(int,int);
+int main()
+{
+    int n,d;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    printf("Enter a digit : ");
+    scanf("%d",&d);
+    if(check(n,d))
+        printf("The number %d contains %d",n,d);
+    else
+        printf("The number %d does not contains %d",n,d);
+    return 0;
+}
+int check(int n,int d)
+{
+    int r,flag=0;
+    while(n>0)
+    {
+        r=n%10;
+        if(r==d)
+        {
+            flag=1;
+            break;
+        }
+        n=n/10;
+    }
+    return flag;
+}
+-----------------------------------------------------------------------------------------
+//10. Write a function to print all prime factors of a given number. For example, if the number is 36 then your result should be 2, 2, 3, 3. (TSRN)
+
+#include<stdio.h>
+void prime_factors(int);
+int main()
+{
+    int n;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    prime_factors(n);
+    return 0;
+}
+void prime_factors(int n)
+{
+    int i;
+    for(i=2;i<=n;i++)
+    {
+        while(n%i==0)
+        {
+            printf("%d ",i);
+            n=n/i;
+        }
+    }
+}
+-----------------------------------------------------------------------------------------
+>>>>>>> e3365b12e34f5220a3b5f8617b4e504228226812
