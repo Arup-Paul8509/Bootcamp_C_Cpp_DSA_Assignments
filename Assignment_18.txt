@@ -1,0 +1,288 @@
+Assignment - 18 : String and function
+
+---------------------------------------------------------------------------------------------------------------
+//1. Write a function to calculate length of the string
+
+#include<stdio.h>
+int len(char[]);
+int main()
+{
+    char str[]="This is a C program";
+    int l;
+    l=len(str);
+    printf("Length of the string is %d",l);
+    return 0;
+}
+int len(char s[])
+{
+    int i;
+    for(i=0;s[i];i++);
+    return i;
+}
+---------------------------------------------------------------------------------------------------------------
+//2. Write a function to reverse a string.
+
+#include<stdio.h>
+void reverse(char[]);
+int main()
+{
+    char str[]="This is a C program";
+    reverse(str);
+    printf("%s",str);
+    return 0;
+}
+void reverse(char s[])
+{
+    int i,j,l;
+    for(i=0;s[i];i++);
+    l=i;
+    char s2[l];
+    for(i=0,j=l-1;i<l,j>=0;i++,j--)
+        s2[i]=s[j];
+    for(i=0;i<l;i++)
+        s[i]=s2[i];
+}
+---------------------------------------------------------------------------------------------------------------
+//3. Write a function to compare two strings.
+
+#include<stdio.h>
+int compare(char[],char[]);
+int main()
+{
+    char str1[]="This is a C program";
+    char str2[]="This is a C++ program";
+    if(compare(str1,str2))
+        printf("Both strings are same");
+    else
+        printf("Both strings are different");    
+    return 0;
+}
+int compare(char s1[],char s2[])
+{
+    int i,l1,l2;
+    for(i=0;s1[i];i++);
+    l1=i;
+    for(i=0;s2[i];i++);
+    l2=i;
+    if(l1!=l2)
+        return 0;
+    else
+    {
+        for(i=0;i<l1;i++)
+        {
+            if(s1[i]!=s2[i])
+                break;
+        }
+        if(i==l1)
+            return 1;
+        else
+            return 0;
+    }
+    
+}
+---------------------------------------------------------------------------------------------------------------
+//4. Write a function to transform string into uppercase
+
+#include<stdio.h>
+void uppercase(char[]);
+int main()
+{
+    char str[]="This is a C program";
+    uppercase(str);
+    printf("%s",str);
+    return 0;
+}
+void uppercase(char s[])
+{
+    int i;
+    for(i=0;s[i];i++);
+    {
+        if(s[i]>=97 && s[i]<=122)
+            s[i]-=32;
+    }
+}
+---------------------------------------------------------------------------------------------------------------
+//5. Write a function to transform a string into lowercase
+
+#include<stdio.h>
+void lowercase(char[]);
+int main()
+{
+    char str[]="This is a C program";
+    lowercase(str);
+    printf("%s",str);
+    return 0;
+}
+void lowercase(char s[])
+{
+    int i;
+    for(i=0;s[i];i++);
+    {
+        if(s[i]>=65 && s[i]<=90)
+            s[i]+=32;
+    }    
+}
+---------------------------------------------------------------------------------------------------------------
+//6. Write a function to check whether a given string is an alphanumeric string or not. (Alphanumeric string must contain at least one alphabet and one digit)
+
+#include<stdio.h>
+int isAlphanumeric(char[]);
+int main()
+{
+    char str[]="The latest version of C is C17";
+    if(isAlphanumeric(str))
+        printf("Alphanumeric");
+    else
+        printf("Not Alphanumeric");
+    return 0;
+}
+int isAlphanumeric(char s[])
+{
+    int i,alp=0,dig=0;
+    for(i=0;s[i];i++)
+    {
+        if((s[i]>=65 && s[i]<=90)||(s[i]>=97 && s[i]<=122))
+            alp++;
+        else if(s[i]>=48 && s[i]<=57)
+            dig++;
+    }
+    if(alp>=1 && dig>=1)
+        return 1;
+    else
+        return 0;
+}
+---------------------------------------------------------------------------------------------------------------
+//7. Write a function to check whether a given string is palindrome or not.
+
+#include<stdio.h>
+int isPalindrome(char[]);
+int main()
+{
+    char str[]="madam";
+    if(isPalindrome(str))
+        printf("Palindrome");
+    else
+        printf("Not Palindrome");
+    return 0;
+}
+int isPalindrome(char s[])
+{
+    int i,j,l;
+    for(i=0;s[i];i++);
+    l=i;
+    for(i=0,j=l-1;i<l,j>=0;i++,j--)
+    {
+        if(s[i]!=s[j])
+            break;
+    }
+    if(i==l && j==-1)
+        return 1;
+    else
+        return 0;
+}
+---------------------------------------------------------------------------------------------------------------
+//8. Write a function to count words in a given string
+
+#include<stdio.h>
+int countword(char[]);
+int main()
+{
+    char str[]="This is a C program";
+    printf("%d",countword(str));
+    return 0;
+}
+int countword(char s[])
+{
+    int c=1,i;
+    for(i=0;s[i];i++)
+    {
+        if(s[i]==' ' || s[i]=='\n' || s[i]=='\t')
+            c++;
+    }
+    return c;
+}
+---------------------------------------------------------------------------------------------------------------
+//9. Write a function to reverse a string word wise. (For example if the given string is “Mysirg Education Services” then the resulting string should be “Services Education Mysirg” )
+
+#include<stdio.h>
+void revstr(char[]);
+int main()
+{
+    char str[]="Mysirg Education Services";
+    revstr(str);
+    printf("%s",str);
+    return 0;
+}
+void revstr(char s[])
+{
+    int i,j,l,c=0,pos;
+    for(i=0;s[i];i++);
+    l=i;
+    char s2[l];
+    //For Last word
+    for(i=l-1;i>=0;i--)
+    {
+        if(s[i]==' ')
+            break;
+    }
+    pos=i;//Last space
+    for(i=pos+1;i<l;i++)
+    {
+        s2[c++]=s[i];
+    }
+    //For Middle words
+    for(i=pos-1;i>=0;i--)
+    {
+        if(s[i]==' ')
+        {
+            s2[c++]=' ';
+            for(j=i+1;s[j]!=' ';j++)
+                s2[c++]=s[j];
+        }
+    }
+    s2[c++]=' ';
+    //For First word
+    for(i=0;s[i]!=' ';i++)
+        s2[c++]=s[i];
+
+    for(i=0;i<l;i++)
+        s[i]=s2[i];
+}
+---------------------------------------------------------------------------------------------------------------
+//10. Write a function to find the repeated character in a given string.
+
+#include<stdio.h>
+void repeatedchar(char []);
+int main()
+{
+    char str[]="This is a C program";
+    repeatedchar(str);
+    return 0;
+}
+void repeatedchar(char s[])
+{
+    int i,j,l,c;
+    for(i=0;s[i];i++);
+    l=i;
+    char s2[l];
+    for(i=0;i<l;i++)
+        s2[i]=s[i];
+    for(i=0;i<l;i++)
+    {
+        if(s2[i]!=' ')
+        {
+            c=1;
+            for(j=i+1;j<l;j++)
+            {
+                if(s2[i]==s2[j])
+                {
+                    c++;
+                    s2[j]=' ';
+                }
+            }
+            if(c>1)
+                printf("%c\n",s2[i]);
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------
