@@ -167,10 +167,10 @@ int main()
 #include<stdio.h>
 int main()
 {
-    int n;
+    float n;
     printf("Enter INR : ");
-    scanf("%d",&n);
-    printf("USD = %f\n",n*76.23);
+    scanf("%f",&n);
+    printf("USD = %f\n",n/76.23);
     return 0;
 }
 -----------------------------------------------------------------------
