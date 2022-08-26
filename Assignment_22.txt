@@ -1,0 +1,213 @@
+Assignment - 22 : DMA
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//1. Define a function to input variable length string and store it in an array without memory wastage.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,i;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+        scanf("%d",(arr+i));
+    for(i=0;i<n;i++)
+        printf("%d ",*(arr+i));
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//2. Write a program to ask the user to input a number of data values he would like to enter then create an array dynamically to accommodate the data values. Now take the input from the user and display the average of data values.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,i,s=0;
+    float avg;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",(arr+i));
+        s=s+*(arr+i);
+    }
+    avg=(float)s/i;
+    printf("Average = %.2f",avg);
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//3. Write a program to calculate the sum of n numbers entered by the user using malloc and free.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,i,s=0;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",(arr+i));
+        s=s+*(arr+i);
+    }
+    printf("Sum = %d",s);
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//4. Write a program to input and print text using dynamic memory allocation.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    char *str;
+    str=(char*)malloc(20*sizeof(char));
+    printf("Enter a text : ");
+    fgets(str,20,stdin);
+    printf("%s",str);
+    free(str);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//5. Write a program to read a one dimensional array, print sum of all elements along with inputted array elements using dynamic memory allocation.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,i,s=0;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",(arr+i));
+        s=s+*(arr+i);
+    }
+    for(i=0;i<n;i++)
+        printf("%d ",*(arr+i));
+    printf("\nSum = %d",s);
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//6. Write a program in C to find the largest element using Dynamic Memory Allocation.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,i,l;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+        scanf("%d",(arr+i));
+    l=*(arr);
+    for(i=0;i<n;i++)
+    {
+        if(*(arr+i)>l)
+            l=*(arr+i);
+    }
+    printf("Largest element = %d",l);
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//7. Write a program to demonstrate memory leak in C.
+
+#include<stdio.h>
+#include<stdlib.h>
+void fn();
+int main()
+{
+    fn();
+    int *q=(int*)malloc(sizeof(int));
+    *q=5;
+    printf("\n%d",*q);
+    return 0;
+}
+void fn()
+{
+    int *p=(int*)malloc(sizeof(int));
+    *p=5;
+    printf("%d",*p);
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//8. Write a program to demonstrate dangling pointers in C.
+
+#include<stdio.h>
+#include<stdlib.h>
+int* fn();
+int main()
+{
+    int *p;
+    p=fn();
+    *p=10;
+    printf("%d",*p);
+    return 0;
+}
+int* fn()
+{
+    int a;
+    a=5;
+    printf("%d",a);
+    return &a;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//9. Write a program to allocate memory dynamically of the size in bytes entered by the user. Also handle the case when memory allocation is failed.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int *p=NULL,n;
+    printf("Enter size in bytes : ");
+    scanf("%d",&n);
+    p=(int*)malloc(n);
+    if(p==NULL)
+        printf("Memory allocation failed.");
+    else
+        printf("Memory allocation successful");
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+//10. Find out the maximum and minimum from an array using dynamic memory allocation in C.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n,*arr,max,min,i;
+    printf("Enter number of elements : ");
+    scanf("%d",&n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d elements :",n);
+    for(i=0;i<n;i++)
+        scanf("%d",(arr+i));
+    max=*(arr);
+    min=*(arr);
+    for(i=0;i<n;i++)
+    {
+        if(*(arr+i)>max)
+            max=*(arr+i);
+        if(*(arr+i)<min)
+            min=*(arr+i);
+    }
+    printf("Maximum = %d \nMinimum = %d",max,min);
+    free(arr);
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
