@@ -1,0 +1,289 @@
+Assignment-24 : Function in C++
+
+-------------------------------------------------------------------------------------------------------
+//1. Define a function to check whether a given number is a Prime number or not.
+
+#include<iostream>
+using namespace std;
+bool isPrime(int);
+int main()
+{
+    int n;
+    cout<<"Enter a number : ";
+    cin>>n;
+    if(isPrime(n))
+        cout<<"Prime";
+    else
+        cout<<"Non Prime";
+    return 0;
+}
+bool isPrime(int x)
+{
+    int i,c=0;
+    for(i=1;i<=x;i++)
+    {
+        if(x%i==0)
+            c++;
+    }
+    if(c==2)
+        return true;
+    else
+        return false;
+}
+-------------------------------------------------------------------------------------------------------
+//2. Define a function to find the highest value digit in a given number.
+
+#include<iostream>
+using namespace std;
+int highestDigit(int);
+int main()
+{
+    int n;
+    cout<<"Enter a number : ";
+    cin>>n;
+    cout<<"Highest digit in the number "<<n<<" is "<<highestDigit(n);
+    return 0;
+}
+int highestDigit(int x)
+{
+    int r,m=0;
+    while(x!=0)
+    {
+        r=x%10;
+        if(r>m)
+            m=r;
+        x=x/10;
+    }
+    return m;
+}
+-------------------------------------------------------------------------------------------------------
+//3. Define a function to calculate x raised to the power y.
+
+#include<iostream>
+using namespace std;
+int power(int,int);
+int main()
+{
+    int x,y;
+    cout<<"Enter value of x : ";
+    cin>>x;
+    cout<<"Enter value of y : ";
+    cin>>y;
+    cout<<x<<" raised to the power "<<y<<" is "<<power(x,y);
+    return 0;
+}
+int power(int x,int y)
+{
+    int i,p=1;
+    for(i=1;i<=y;i++)
+        p=p*x;
+    return p;
+}
+-------------------------------------------------------------------------------------------------------
+//4. Define a function to print Pascal Triangle up to N lines.
+
+#include<iostream>
+using namespace std;
+void pascalTriangle(int);
+int fact(int);
+int nCr(int,int);
+int main()
+{
+    int n;
+    cout<<"Enter number of lines : ";
+    cin>>n;
+    pascalTriangle(n);
+    return 0;
+}
+void pascalTriangle(int line)
+{
+    int i,j,k;
+    for(i=0;i<line;i++)
+    {
+        for(k=i;k<line;k++)
+            cout<<" ";
+        for(j=0;j<=i;j++)
+        {
+            cout<<nCr(i,j)<<" ";
+        }
+        cout<<endl;
+    }
+
+}
+int fact(int n)
+{
+    int i,f=1;
+    for(i=1;i<=n;f=f*i,i++);
+    return f;
+}
+int nCr(int n,int r)
+{
+    return fact(n)/(fact(r)*fact(n-r));
+}
+-------------------------------------------------------------------------------------------------------
+//5. Define a function to check whether a given number is a term in a Fibonacci series or not.
+
+#include<iostream>
+using namespace std;
+bool isFibonacci(int);
+int main()
+{
+    int n;
+    cout<<"Enter a number : ";
+    cin>>n;
+    if(isFibonacci(n))
+        cout<<"Term in Fibonacci";
+    else
+        cout<<"Term not in Fibonacci";
+    return 0;
+}
+bool isFibonacci(int x)
+{
+    int a=0,b=1,s;
+    while(a<=x)
+    {
+        if(a==x)
+            return true;
+        s=a+b;
+        a=b;
+        b=s;
+    }
+    return false;
+}
+-------------------------------------------------------------------------------------------------------
+//6. Define a function to swap data of two int variables using call by reference
+
+#include<iostream>
+using namespace std;
+void swap(int&,int&);
+int main()
+{
+    int a,b;
+    cout<<"Enter value for a : ";
+    cin>>a;
+    cout<<"Enter value for b : ";
+    cin>>b;
+    cout<<"Before Swapping : a = "<<a<<" b = "<<b<<endl;
+    swap(a,b);
+    cout<<"After Swapping : a = "<<a<<" b = "<<b;
+    return 0;
+}
+void swap(int &x,int &y)
+{
+    int t;
+    t=x;
+    x=y;
+    y=t;
+}
+-------------------------------------------------------------------------------------------------------
+//7. Write a function using the default argument that is able to add 2 or 3 numbers.
+
+#include<iostream>
+using namespace std;
+int add(int,int,int=0);
+int main()
+{
+    cout<<"Sum = "<<add(2,4)<<endl;
+    cout<<"Sum = "<<add(10,5,6)<<endl;
+    return 0;
+}
+int add(int a,int b,int c)
+{
+    return a+b+c;
+}
+-------------------------------------------------------------------------------------------------------
+//8. Define overloaded functions to calculate area of circle, area of rectangle and area of triangle
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+float area(float);
+float area(float,float);
+float area(float,float,float);
+int main()
+{
+    cout<<"Area of Circle = "<<area(5)<<endl;
+    cout<<"Area of Rectangle = "<<area(9,6)<<endl;
+    cout<<"Area of Triangle = "<<area(3,5,6)<<endl;
+    return 0;
+}
+float area(float r)
+{
+    return 3.14*r*r;
+}
+float area(float l,float w)
+{
+    return l*w;
+}
+float area(float a,float b,float c)
+{
+    float s=(a+b+c)/2;
+    return sqrt(s*(s-a)*(s-b)*(s-c));
+}
+-------------------------------------------------------------------------------------------------------
+//9. Write functions using function overloading to find a maximum of two numbers and both the numbers can be integer or real.
+
+#include<iostream>
+using namespace std;
+int max(int,int);
+float max(float,float);
+float max(int,float);
+float max(float,int);
+int main()
+{
+    cout<<"Maximum = "<<max(2,3)<<endl;
+    cout<<"Maximum = "<<max(3.5,3.7)<<endl;
+    cout<<"Maximum = "<<max(4,3.7f)<<endl;
+    cout<<"Maximum = "<<max(3.9f,3)<<endl;
+    return 0;
+}
+int max(int a,int b)
+{
+    return (a>b) ? a : b;
+}
+float max(float x,float y)
+{
+    return (x>y) ? x : y;
+}
+float max(int x,float y)
+{
+    return (x>y) ? x : y;
+}
+float max(float x,int y)
+{
+    return (x>y) ? x : y;
+}
+-------------------------------------------------------------------------------------------------------
+//10. Write functions using function overloading to add two numbers having different data types
+
+#include<iostream>
+using namespace std;
+int add(int,int);
+float add(float,float);
+float add(int,float);
+float add(float,int);
+int main()
+{
+    cout<<add(2,3)<<endl;
+    cout<<add(3.4f,5.9f)<<endl;
+    cout<<add(3,5.9f)<<endl;
+    cout<<add(3.6f,2)<<endl;
+    return 0;
+}
+int add(int x,int y)
+{
+    return x+y;
+}
+float add(float x,float y)
+{
+    return x+y;
+}
+float add(int x,float y)
+{
+    return x+y;
+}
+float add(float x,int y)
+{
+    return x+y;
+}
+-------------------------------------------------------------------------------------------------------
