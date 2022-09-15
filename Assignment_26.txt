@@ -1,0 +1,296 @@
+Assignment - 26 : Member function, static, constructor
+
+--------------------------------------------------------------------------------------------------------------------
+/*
+1. Define a class Complex to represent a complex number with instance variables a and b to store real and imaginary parts.
+   Also define following member functions 
+        a. void setData(int,int) 
+        b. void showData() 
+        c. Complex add(Complex)
+*/
+#include<iostream>
+using namespace std;
+class Complex
+{
+    private:
+        int real,imaginary;
+    public:
+        void setData(int a,int b){real=a; imaginary=b;}
+        void showData(){cout<<real<<"+"<<imaginary<<"i"<<endl;};
+        Complex add(Complex C)
+        {
+            Complex tmp;
+            tmp.real=real+C.real;
+            tmp.imaginary=imaginary+C.imaginary;
+            return tmp;
+        }
+};
+int main()
+{
+    Complex c1,c2,c3;
+    c1.setData(3,4);
+    c1.showData();
+    c2.setData(5,6);
+    c2.showData();
+    c3=c1.add(c2);
+    c3.showData();
+    return 0;   
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    2. Define a class Time to represent a time with instance variables h,m and s to store hour, minute and second.
+       Also define following member functions
+            a. void setTime(int,int,int)
+            b. void showTime()
+            c. void normalize()
+            d. Time add(Time)
+*/
+#include<iostream>
+using namespace std;
+class Time
+{
+    private:
+        int hr,min,sec;
+    public:
+        void setTime(int a,int b,int c){ hr=a; min=b; sec=c; }
+        void showTime(){ cout<<hr<<" hr "<<min<<" min "<<sec<<" sec "<<endl; }
+        void normalize()
+        {
+            min=min+sec/60;
+            sec=sec%60;
+            hr=hr+min/60;
+            min=min%60;
+        }
+        Time add(Time T)
+        {
+            Time tmp;
+            tmp.hr=hr+T.hr;
+            tmp.min=min+T.min;
+            tmp.sec=sec+T.sec;
+            return tmp;
+        }
+};
+int main()
+{
+    Time t1,t2,t3;
+    cout<<"Time 1"<<endl;
+    t1.setTime(11,90,65);
+    t1.showTime();
+    cout<<"Normalized Time 1"<<endl;
+    t1.normalize();
+    t1.showTime();
+    cout<<"Time 2"<<endl;
+    t2.setTime(5,30,90);
+    t2.showTime();
+    cout<<"Normalized Time 2"<<endl;
+    t2.normalize();
+    t2.showTime();
+    cout<<"Time Addition"<<endl;
+    t3=t1.add(t2);
+    t3.showTime();
+    cout<<"Normalized Time Addition"<<endl;
+    t3.normalize();
+    t3.showTime();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+//3. Define a class Cube and calculate Volume of Cube and initialise it using constructor.
+#include<iostream>
+using namespace std;
+class Cube
+{
+    private:
+        int l,w,h;
+    public:
+        Cube(int a,int b,int c){ l=a; w=b; h=c;}
+        int volume(){ return l*w*h;}
+};
+int main()
+{
+    Cube c(5,3,8);
+    cout<<c.volume();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+//4. Define a class Counter and Write a program to Show Counter using Constructor.
+#include<iostream>
+using namespace std;
+class Counter
+{
+    private:
+        static int c;
+    public:
+        Counter(){cout<<++c<<endl;}
+};
+int Counter::c;
+int main()
+{
+    Counter c1,c2,c3;
+}
+--------------------------------------------------------------------------------------------------------------------
+//5. Define a class Date and write a program to Display Dateand initialise date object using Constructors.
+#include<iostream>
+using namespace std;
+class Date
+{
+    private:
+        int d,m,y;
+    public:
+        Date(int a,int b,int c){ d=a; m=b; y=c;}
+        void showDate(){ cout<<"D-M-Y : "<<d<<"-"<<m<<"-"<<y<<endl; }
+};
+int main()
+{
+    Date d(3,11,2001);
+    d.showDate();
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    6. Define a class student and write a program to enter student details using constructor 
+    and define member function to display all the details.
+*/
+#include<iostream>
+using namespace std;
+class student
+{
+    private:
+        string name;
+        int roll,cls;
+        char sec;
+    public:
+        student(int r,string n,int c,char s)
+        {
+            roll=r;
+            name=n;
+            cls=c;
+            sec=s;
+        }
+        void display()
+        {
+            cout<<"Roll : "<<roll<<endl;
+            cout<<"Name : "<<name<<endl;
+            cout<<"Class : "<<cls<<endl;
+            cout<<"Section : "<<sec<<endl;
+        }
+};
+int main()
+{
+    student s(3,"Arup Paul",10,'C');
+    s.display();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    7. Define a class Box and write a program to enter length, breadth and height and initialise 
+    objects using constructor also define member functions to calculate volume of the box.
+*/
+#include<iostream>
+using namespace std;
+class Box
+{
+    private:
+        int l,b,h;
+    public:
+        Box(int p,int q,int r){ l=p; b=q; h=r;}
+        int calculateVolume(){ return l*b*h;}
+};
+int main()
+{
+    Box b(2,3,4);
+    cout<<b.calculateVolume();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    8. Define a class Bank and define member functions to read principal , rate of interest and year. 
+    Another member functions to calculate simple interest and display it. Initialise all details using 
+    constructor.
+*/
+#include<iostream>
+using namespace std;
+class Bank
+{
+    private:
+        string name,accNo;
+        int yr,p;
+        float roi;
+    public:
+        Bank(string n,string a){ name=n; accNo=a;}
+        void setPrincipal(int x){ p=x; }
+        void setInterest(float x){ roi=x; }
+        void setYear(int x){ yr=x; }
+        float calculateSI(){ return (float)((p*yr*roi)/100); }
+        void showDetails(){ cout<<name<<endl<<accNo<<endl; }
+};
+int main()
+{
+    Bank b("Arup Paul","3628571946");
+    b.setPrincipal(20000);
+    b.setInterest(2.6);
+    b.setYear(3);
+    b.showDetails();
+    cout<<b.calculateSI();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    9. Define a class Bill and define its member function get() to take detail of customer , 
+    calculateBill() function to calculate electricity bill using below tariff : 
+        Upto 100 unit RS. 1.20 per 
+        unit From 100 to 200 unit RS. 2 per 
+        unit Above 200 units RS. 3 per unit.
+*/
+#include<iostream>
+using namespace std;
+class Bill
+{
+    private:
+        int unit;
+        string name,instNo;
+    public:
+        void get(string n,string i,int u){ name=n; instNo=i; unit=u; }
+        float calculateBill()
+        {
+            if(unit<=100)
+                return unit*1.20;
+            else if(unit>100 && unit<=200)
+                return (100*1.20)+((unit-100)*2);
+            else
+                return (100*1.20)+(100*2)+((unit-200)*3);
+        }        
+};
+int main()
+{
+    Bill b;
+    b.get("Arup Paul","192056",125);
+    cout<<b.calculateBill();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+    10. Define a class StaticCount and create a static variable. Increment this variable in a function 
+    and call this 3 times and display the result.
+*/
+#include<iostream>
+using namespace std;
+class StaticCount
+{
+    private:
+        static int c;
+    public:
+        void increase(){ c++; }
+        void diplay(){cout<<c<<endl;}
+};
+int StaticCount::c;
+int main()
+{
+    StaticCount sc;
+    sc.increase();
+    sc.diplay();
+    sc.increase();
+    sc.diplay();
+    sc.increase();
+    sc.diplay();
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------
